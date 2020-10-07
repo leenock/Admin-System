@@ -19,7 +19,9 @@
                   <h4 class="card-title">Users Management</h4>
                 </div>
                 <div  class="card-body">
+                @can('user-create')
                 <a button type="submit" href="{{ route('users.create') }}" class="btn btn-sm btn-rose pull-right">Add User<div class="ripple-container"></div></a>
+                @endcan
                   <div class="table-responsive">
                     <table class="table">
                       <thead>

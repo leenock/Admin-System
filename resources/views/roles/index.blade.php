@@ -4,121 +4,62 @@
 <div class="content">
         <div class="container-fluid">
           <div class="row">
-            <div class="col-md-12">
-              <div class="card">
+            <div class="col-md-11">
+            @if ($message = Session::get('success'))
+                  <div style="align:center" class="alert alert-rose col-md-11 col-md-offset-4">
+                  <p>{{ $message }}</p>
+                  </div>
+                  @endif
+              <div style="width:97%" class="card">
                 <div class="card-header card-header-rose card-header-icon">
                   <div class="card-icon">
-                    <i class="material-icons">work</i>
+                    <i class="material-icons">supervised_user_circle</i>
                   </div>
-                  <h4 class="card-title">Roles</h4>
+              
+                  <h4 class="card-title">Role Management</h4>
                 </div>
-                <div class="card-body">
-                <button type="submit" class="btn btn-sm btn-rose pull-right">Add role<div class="ripple-container"></div></button>
+                <div  class="card-body">
+                @can('role-create')
+                <a button type="submit" href="{{ route('roles.create') }}" class="btn btn-sm btn-rose pull-right">Add Role<div class="ripple-container"></div></a>
+                @endcan
                   <div class="table-responsive">
                     <table class="table">
                       <thead>
                         <tr>
                           <th class="text-center">#</th>
                           <th>Name</th>
-                          <th>Job Position</th>
-                          <th>Since</th>
-                          <th class="text-right">Salary</th>
+                          <th>created at</th>
+                          <th>Updated at</th>
                           <th class="text-right">Actions</th>
                         </tr>
                       </thead>
                       <tbody>
+                      @foreach ($roles as $key => $role)
                         <tr>
-                          <td class="text-center">1</td>
-                          <td>Andrew Mike</td>
-                          <td>Develop</td>
-                          <td>2013</td>
-                          <td class="text-right">&euro; 99,225</td>
+                        <td>{{ ++$i }}</td>
+                        <td>{{ $role->name }}</td>  
+                        <td>{{ $role->created_at }}</td> 
+                        <td>{{ $role->updated_at }}</td>     
                           <td class="td-actions text-right">
-                            <button type="button" rel="tooltip" class="btn btn-info">
+                            <a button href="{{ route('roles.show',$role->id) }}" type="button" rel="tooltip" class="btn btn-info">
                               <i class="material-icons">person</i>
-                            </button>
-                            <button type="button" rel="tooltip" class="btn btn-success">
+                            </a>
+                            @can('role-edit')
+                            <a href="{{ route('roles.edit',$role->id) }}" type="button" rel="tooltip" class="btn btn-success">
                               <i class="material-icons">edit</i>
-                            </button>
-                            <button type="button" rel="tooltip" class="btn btn-danger">
-                              <i class="material-icons">close</i>
-                            </button>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td class="text-center">2</td>
-                          <td>John Doe</td>
-                          <td>Design</td>
-                          <td>2012</td>
-                          <td class="text-right">&euro; 89,241</td>
-                          <td class="td-actions text-right">
-                            <button type="button" rel="tooltip" class="btn btn-info btn-round">
-                              <i class="material-icons">person</i>
-                            </button>
-                            <button type="button" rel="tooltip" class="btn btn-success btn-round">
-                              <i class="material-icons">edit</i>
-                            </button>
-                            <button type="button" rel="tooltip" class="btn btn-danger btn-round">
-                              <i class="material-icons">close</i>
-                            </button>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td class="text-center">3</td>
-                          <td>Alex Mike</td>
-                          <td>Design</td>
-                          <td>2010</td>
-                          <td class="text-right">&euro; 92,144</td>
-                          <td class="td-actions text-right">
-                            <button type="button" rel="tooltip" class="btn btn-info btn-link">
-                              <i class="material-icons">person</i>
-                            </button>
-                            <button type="button" rel="tooltip" class="btn btn-success btn-link">
-                              <i class="material-icons">edit</i>
-                            </button>
-                            <button type="button" rel="tooltip" class="btn btn-danger btn-link">
-                              <i class="material-icons">close</i>
-                            </button>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td class="text-center">4</td>
-                          <td>Mike Monday</td>
-                          <td>Marketing</td>
-                          <td>2013</td>
-                          <td class="text-right">&euro; 49,990</td>
-                          <td class="td-actions text-right">
-                            <button type="button" rel="tooltip" class="btn btn-info btn-round">
-                              <i class="material-icons">person</i>
-                            </button>
-                            <button type="button" rel="tooltip" class="btn btn-success btn-round">
-                              <i class="material-icons">edit</i>
-                            </button>
-                            <button type="button" rel="tooltip" class="btn btn-danger btn-round">
-                              <i class="material-icons">close</i>
-                            </button>
-                          </td>
-                        </tr>
-                        <tr>
-                          <td class="text-center">5</td>
-                          <td>Paul Dickens</td>
-                          <td>Communication</td>
-                          <td>2015</td>
-                          <td class="text-right">&euro; 69,201</td>
-                          <td class="td-actions text-right">
-                            <button type="button" rel="tooltip" class="btn btn-info">
-                              <i class="material-icons">person</i>
-                            </button>
-                            <button type="button" rel="tooltip" class="btn btn-success">
-                              <i class="material-icons">edit</i>
-                            </button>
-                            <button type="button" rel="tooltip" class="btn btn-danger">
-                              <i class="material-icons">close</i>
-                            </button>
+                            </a>
+                            @endcan
+                            @can('role-delete')
+{!! Form::open(['method' => 'DELETE','route' => ['roles.destroy', $role->id],'style'=>'display:inline']) !!}
+{!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
+{!! Form::close() !!}
+@endcan
                           </td>
                         </tr>
                       </tbody>
+                      @endforeach
                     </table>
+                    {!! $roles->render() !!}
                   </div>
                 </div>
               </div>
