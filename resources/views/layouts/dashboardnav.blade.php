@@ -13,6 +13,59 @@
   <!-- CSS Files -->
   <link href="{{ asset('assets_dashboard/css') }}/material-dashboard.css?v=2.1.2" rel="stylesheet" />
   <link href="{{ asset('assets_dashboard/css') }}/material-dashboard2.css?v=2.1.2" rel="stylesheet" />
+ 
+
+<style>
+/*Profile Pic Start*/
+.picture-container{
+    position: relative;
+    cursor: pointer;
+    text-align: center;
+}
+.picture{
+    width: 106px;
+    height: 106px;
+    background-color: #999999;
+    border: 4px solid #CCCCCC;
+    color: #FFFFFF;
+    border-radius: 50%;
+    margin: 0px auto;
+    overflow: hidden;
+    transition: all 0.2s;
+    -webkit-transition: all 0.2s;
+}
+.picture:hover{
+    border-color: #df2869;
+}
+.content.ct-wizard-green .picture:hover{
+    border-color: #05ae0e;
+}
+.content.ct-wizard-blue .picture:hover{
+    border-color: #3472f7;
+}
+.content.ct-wizard-orange .picture:hover{
+    border-color: #ff9500;
+}
+.content.ct-wizard-red .picture:hover{
+    border-color: #ff3b30;
+}
+.picture input[type="file"] {
+    cursor: pointer;
+    display: block;
+    height: 100%;
+    left: 0;
+    opacity: 0 !important;
+    position: absolute;
+    top: 0;
+    width: 100%;
+}
+
+.picture-src{
+    width: 100%;
+    
+}
+/*Profile Pic End*/
+</style>
 
   <!-- CSS Just for demo purpose, don't include it in your project -->
 </head>
@@ -39,6 +92,12 @@
               <p>Dummys</p>
             </a>
           </li> 
+          <li class="nav-item ">
+            <a class="nav-link" href="{{ route('students.index') }}">
+              <i class="material-icons">person</i>
+              <p>Students</p>
+            </a>
+          </li> 
         </ul>
       </div>
     </div>
@@ -48,7 +107,7 @@
  <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
         <div class="container-fluid">
           <div class="navbar-wrapper">
-            <a class="navbar-brand" href="#">Infinitive Administrator System</a>
+            <a class="navbar-brand" href="#">Infinitive Admission System</a>
           </div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
             <span class="sr-only">Toggle navigation</span>
@@ -164,8 +223,8 @@
  <script src="{{ asset('assets_dashboard/js/core') }}/jquery.min.js" type="text/javascript"></script>
   <script src="{{ asset('assets_dashboard/js/core') }}/popper.min.js" type="text/javascript"></script>
   <script src="{{ asset('assets_dashboard/js/core') }}/bootstrap-material-design.min.js" type="text/javascript"></script>
-  <script src="{{ asset('assets_dashboard/js/plugins') }}/moment.min.js"></script>
 
+  <script src="{{ asset('assets_dashboard/js/plugins') }}/perfect-scrollbar.jquery.min.js"></script>
 <!-- Plugin for the momentJs  -->
   <script src="{{ asset('assets_dashboard/js/plugins') }}/moment.min.js"></script>
   <!--  Plugin for Sweet Alert -->
@@ -193,14 +252,18 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script>
   <!-- Library for adding dinamically elements -->
   <script src="{{ asset('assets_dashboard/js/plugins') }}/arrive.min.js"></script>
-
+ <!-- Place this tag in your head or just before your close body tag. -->
+ <script async defer src="https://buttons.github.io/buttons.js"></script>
   <!-- Chartist JS -->
   <script src="{{ asset('assets_dashboard/js/plugins') }}/chartist.min.js"></script>
   <!--  Notifications Plugin    -->
   <script src="{{ asset('assets_dashboard/js/plugins') }}/bootstrap-notify.js"></script>
   <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
   <script src="{{ asset('assets_dashboard/js') }}/material-dashboard.js?v=2.1.2" type="text/javascript"></script>
+  <script src="{{ asset('assets_dashboard/demo') }}/demmo.js" type="text/javascript"></script>
 
+ <!-- Sharrre libray -->
+ <script src="{{ asset('assets_dashboard/js/core') }}/jquery.sharrre.js" type="text/javascript"></script>
 
   <script>
     $(document).ready(function() {
@@ -209,6 +272,33 @@
 
     });
   </script>
+ <script>
+    $(document).ready(function() {
+      // Initialise the wizard
+      demo.initWizard();
+      setTimeout(function() {
+        $('.card.card-wizard').addClass('active');
+      }, 600);
+    });
+
+    $(document).ready(function(){
+// Prepare the preview for profile picture
+    $("#wizard-picture").change(function(){
+        readURL(this);
+    });
+});
+function readURL(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+            $('#wizardPicturePreview').attr('src', e.target.result).fadeIn('slow');
+        }
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+  </script>
+
   <script>
     $(document).ready(function() {
       $('#datatables').DataTable({
@@ -246,5 +336,15 @@
       });
     });
   </script>
+  <script>
+    $(document).ready(function() {
+      // initialise Datetimepicker and Sliders
+      md.initFormExtendedDatetimepickers();
+      if ($('.slider').length != 0) {
+        md.initSliders();
+      }
+    });
+  </script>
+
 </body>
 </html>
