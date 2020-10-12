@@ -5,6 +5,11 @@
           <!--      Wizard container        -->
           <div class="wizard-container">
             <div class="card card-wizard active" data-color="primary" id="wizardProfile">
+            <div class="card-header card-header-rose card-header-icon">
+                  <div class="card-icon">
+                    <i class="material-icons">perm_identity</i>
+                  </div>
+                  </div>
              <!-- start of form application -->
               <form action="" method="" novalidate="novalidate">
                 <div class="card-header text-center">
@@ -18,25 +23,25 @@
                       <ul class="nav nav-tabs" data-tabs="tabs">
                         <li class="nav-item">
                           <a class="nav-link active show" href="#profile" data-toggle="tab">
-                            <i class="material-icons">person</i> PERSONAL DATA
+                            <i class="material-icons">perm_identity</i> PERSONAL DATA
                             <div class="ripple-container"></div>
                           <div class="ripple-container"></div></a>
                         </li>
                         <li class="nav-item">
                           <a class="nav-link" href="#messages" data-toggle="tab">
-                          <i class="material-icons">person</i> Account
+                          <i class="material-icons">arrow_right_alt</i> Section b
                             <div class="ripple-container"></div>
                           <div class="ripple-container"></div></a>
                         </li>
                         <li class="nav-item">
                           <a class="nav-link" href="#settings" data-toggle="tab">
-                            <i class="material-icons">cloud</i> Address
+                            <i class="material-icons">arrow_right_alt</i> Section C
                             <div class="ripple-container"></div>
                           <div class="ripple-container"></div></a>
                         </li>
                         <li class="nav-item">
                           <a class="nav-link" href="#course" data-toggle="tab">
-                            <i class="material-icons">book</i> Programme
+                            <i class="material-icons">arrow_right_alt</i> Section D
                             <div class="ripple-container"></div>
                           <div class="ripple-container"></div></a>
                         </li>
@@ -65,7 +70,7 @@
                            </div>
                        <div class="col-sm-6">
                           <div class="form-group bmd-form-group">
-                           <input type="text" placeholder="First Name" class="form-control"  >
+                           <input type="text" placeholder="First Name" class="form-control" >
                              </div>
                            <div class="form-group bmd-form-group">
                               <input type="text" placeholder="Last Name" class="form-control" >

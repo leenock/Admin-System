@@ -71,7 +71,7 @@
 </head>
 <body class="">
   <div class="wrapper ">
-  <div class="sidebar" data-color="azure">
+  <div class="sidebar" data-color="azure" data-background-color="black">
       <!--
         Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
     -->
@@ -93,18 +93,74 @@
             </a>
           </li> 
           <li class="nav-item ">
-            <a class="nav-link collapsed" data-toggle="collapse" href="#tablesExamples" aria-expanded="false">
+            <a class="nav-link collapsed" data-toggle="collapse" href="#students" aria-expanded="false">
               <i class="material-icons">person</i>
               <p> Students
                 <b class="caret"></b>
               </p>
             </a>
-            <div class="collapse" id="tablesExamples" style="">
+            <div class="collapse" id="students" style="">
               <ul class="nav">
                 <li class="nav-item ">
                   <a class="nav-link" href="{{ route('students.create') }}">
                     <span class="sidebar-mini"> ADM </span>
                     <span class="sidebar-normal"> Admissions </span>
+                  </a>
+                </li>
+                <li class="nav-item ">
+                  <a class="nav-link" href="{{ route('students.index') }}">
+                    <span class="sidebar-mini"> ST </span>
+                    <span class="sidebar-normal"> Students </span>
+                  </a>
+                </li>
+                
+              </ul>
+            </div>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link collapsed" data-toggle="collapse" href="#system_users" aria-expanded="false">
+              <i class="material-icons">person</i>
+              <p> system Users
+                <b class="caret"></b>
+              </p>
+            </a>
+            <div class="collapse" id="system_users" style="">
+              <ul class="nav">
+                <li class="nav-item ">
+                  <a class="nav-link" href="{{ route('users.index') }}">
+                    <span class="sidebar-mini"> U.S </span>
+                    <span class="sidebar-normal"> Users </span>
+                  </a>
+                </li>
+                <li class="nav-item ">
+                  <a class="nav-link" href="{{ route('users.create') }}">
+                    <span class="sidebar-mini"> N.U </span>
+                    <span class="sidebar-normal"> New Users </span>
+                  </a>
+                </li>
+                
+              </ul>
+            </div>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link collapsed" data-toggle="collapse" href="#system_roles" aria-expanded="false">
+              <i class="material-icons">person</i>
+              <p> user Roles
+                <b class="caret"></b>
+              </p>
+            </a>
+            <div class="collapse" id="system_roles" style="">
+              <ul class="nav">
+                <li class="nav-item ">
+                  <a class="nav-link" href="{{ route('roles.index') }}">
+                    <span class="sidebar-mini"> R.O </span>
+                    <span class="sidebar-normal"> Roles </span>
+                  </a>
+                </li>
+                <li class="nav-item ">
+                  <a class="nav-link" href="{{ route('roles.create') }}">
+                    <span class="sidebar-mini"> N.R </span>
+                    <span class="sidebar-normal"> New Role </span>
                   </a>
                 </li>
                 

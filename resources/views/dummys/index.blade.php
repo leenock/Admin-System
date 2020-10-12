@@ -30,6 +30,7 @@
                       <thead>
                         <tr>
                           <th>id</th>
+                          <th>Passport</th>
                           <th>name</th>
                           <th>details</th>
                           <th>created at</th>
@@ -40,6 +41,7 @@
                       <tfoot>
                         <tr>
                           <th>Id</th>
+                          <th>Passport</th>
                           <th>name</th>
                           <th>details</th>
                           <th>created at</th>
@@ -51,6 +53,14 @@
                       @foreach ($dummies as $dummy)
                         <tr>
                           <td>{{ ++$i }}</td>
+                          <td>
+                          <div class="picture-container">
+                                <div class="picture">
+                                 <img src="assets/img/faces/kendall.jpg" class="picture-src" id="wizardPicturePreview" title="">   
+                                </div>       
+                                </div>
+                           </div>
+                          </td>
                           <td>{{ $dummy->name }}</td>
                           <td>{{ $dummy->detail }}</td>
                           <td>{{ $dummy->created_at }}</td>
