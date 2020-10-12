@@ -93,11 +93,24 @@
             </a>
           </li> 
           <li class="nav-item ">
-            <a class="nav-link" href="{{ route('students.index') }}">
+            <a class="nav-link collapsed" data-toggle="collapse" href="#tablesExamples" aria-expanded="false">
               <i class="material-icons">person</i>
-              <p>Students</p>
+              <p> Students
+                <b class="caret"></b>
+              </p>
             </a>
-          </li> 
+            <div class="collapse" id="tablesExamples" style="">
+              <ul class="nav">
+                <li class="nav-item ">
+                  <a class="nav-link" href="{{ route('students.create') }}">
+                    <span class="sidebar-mini"> ADM </span>
+                    <span class="sidebar-normal"> Admissions </span>
+                  </a>
+                </li>
+                
+              </ul>
+            </div>
+          </li>
         </ul>
       </div>
     </div>
@@ -109,12 +122,6 @@
           <div class="navbar-wrapper">
             <a class="navbar-brand" href="#">Infinitive Admission System</a>
           </div>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="navbar-toggler-icon icon-bar"></span>
-            <span class="navbar-toggler-icon icon-bar"></span>
-            <span class="navbar-toggler-icon icon-bar"></span>
-          </button>
           <div class="collapse navbar-collapse justify-content-end">
             <form class="navbar-form">
               <div class="input-group no-border">
