@@ -80,22 +80,16 @@
         </a></div>
       <div class="sidebar-wrapper">
         <ul class="nav">
-          <li class="nav-item active  ">
-            <a class="nav-link" href="#">
+          <li class="nav-item active">
+            <a class="nav-link" href="http://127.0.0.1:8000/infinitive_systems">
               <i class="material-icons">dashboard</i>
               <p>Dashboard</p>
             </a>
           </li>
           <li class="nav-item ">
-            <a class="nav-link" href="{{ route('dummys.index') }}">
-              <i class="material-icons">person</i>
-              <p>Dummys</p>
-            </a>
-          </li> 
-          <li class="nav-item ">
             <a class="nav-link collapsed" data-toggle="collapse" href="#students" aria-expanded="false">
-              <i class="material-icons">person</i>
-              <p> Students
+              <i class="material-icons">view_module</i>
+              <p> Admissions
                 <b class="caret"></b>
               </p>
             </a>
@@ -104,7 +98,7 @@
                 <li class="nav-item ">
                   <a class="nav-link" href="{{ route('students.create') }}">
                     <span class="sidebar-mini"> ADM </span>
-                    <span class="sidebar-normal"> Admissions </span>
+                    <span class="sidebar-normal"> Register </span>
                   </a>
                 </li>
                 <li class="nav-item ">
@@ -118,8 +112,33 @@
             </div>
           </li>
           <li class="nav-item ">
+            <a class="nav-link collapsed" data-toggle="collapse" href="#finance" aria-expanded="false">
+              <i class="material-icons">qr_code_scanner</i>
+              <p> Finance
+                <b class="caret"></b>
+              </p>
+            </a>
+            <div class="collapse" id="finance" style="">
+              <ul class="nav">
+                <li class="nav-item ">
+                  <a class="nav-link" href="#">
+                    <span class="sidebar-mini"> S.F </span>
+                    <span class="sidebar-normal"> Student finance </span>
+                  </a>
+                </li>
+                <li class="nav-item ">
+                  <a class="nav-link" href="#">
+                    <span class="sidebar-mini"> C.F </span>
+                    <span class="sidebar-normal"> course finance </span>
+                  </a>
+                </li>
+                
+              </ul>
+            </div>
+          </li>
+          <li class="nav-item ">
             <a class="nav-link collapsed" data-toggle="collapse" href="#system_users" aria-expanded="false">
-              <i class="material-icons">person</i>
+              <i class="material-icons">people_outline</i>
               <p> system Users
                 <b class="caret"></b>
               </p>
@@ -128,23 +147,24 @@
               <ul class="nav">
                 <li class="nav-item ">
                   <a class="nav-link" href="{{ route('users.index') }}">
-                    <span class="sidebar-mini"> U.S </span>
-                    <span class="sidebar-normal"> Users </span>
+                    <span class="sidebar-mini"> M.U </span>
+                    <span class="sidebar-normal">Manage Users </span>
                   </a>
                 </li>
+                @can('user-create')
                 <li class="nav-item ">
                   <a class="nav-link" href="{{ route('users.create') }}">
                     <span class="sidebar-mini"> N.U </span>
-                    <span class="sidebar-normal"> New Users </span>
+                    <span class="sidebar-normal"> Create New Users </span>
                   </a>
                 </li>
-                
+                @endcan
               </ul>
             </div>
           </li>
           <li class="nav-item ">
             <a class="nav-link collapsed" data-toggle="collapse" href="#system_roles" aria-expanded="false">
-              <i class="material-icons">person</i>
+              <i class="material-icons">group_work</i>
               <p> user Roles
                 <b class="caret"></b>
               </p>
@@ -153,21 +173,92 @@
               <ul class="nav">
                 <li class="nav-item ">
                   <a class="nav-link" href="{{ route('roles.index') }}">
-                    <span class="sidebar-mini"> R.O </span>
-                    <span class="sidebar-normal"> Roles </span>
+                    <span class="sidebar-mini"> M.R </span>
+                    <span class="sidebar-normal">Manage Roles </span>
+                  </a>
+                </li>
+                @can('role-create')
+                <li class="nav-item ">
+                  <a class="nav-link" href="{{ route('roles.create') }}">
+                    <span class="sidebar-mini"> C.N.R </span>
+                    <span class="sidebar-normal"> create new Role </span>
+                  </a>
+                </li>
+                @endcan
+              </ul>
+            </div>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link collapsed" data-toggle="collapse" href="#examinations" aria-expanded="false">
+              <i class="material-icons">sticky_note_2</i>
+              <p> Examinations (EMS)
+                <b class="caret"></b>
+              </p>
+            </a>
+            <div class="collapse" id="examinations" style="">
+              <ul class="nav">
+                <li class="nav-item ">
+                  <a class="nav-link" href="#">
+                    <span class="sidebar-mini"> E.MS </span>
+                    <span class="sidebar-normal"> Exams </span>
                   </a>
                 </li>
                 <li class="nav-item ">
-                  <a class="nav-link" href="{{ route('roles.create') }}">
-                    <span class="sidebar-mini"> N.R </span>
-                    <span class="sidebar-normal"> New Role </span>
+                  <a class="nav-link" href="#">
+                    <span class="sidebar-mini"> A.S.S </span>
+                    <span class="sidebar-normal"> Assingment </span>
+                  </a>
+                </li>
+                <li class="nav-item ">
+                  <a class="nav-link" href="#">
+                    <span class="sidebar-mini"> A.T.T </span>
+                    <span class="sidebar-normal"> Attendance </span>
+                  </a>
+                </li>
+                <li class="nav-item ">
+                  <a class="nav-link" href="#">
+                    <span class="sidebar-mini"> T.T </span>
+                    <span class="sidebar-normal"> Timetable </span>
+                  </a>
+                </li>
+              </ul>
+            </div>
+          </li>
+          <li class="nav-item ">
+            <a class="nav-link collapsed" data-toggle="collapse" href="#reports" aria-expanded="false">
+              <i class="material-icons">topic</i>
+              <p> Reports
+                <b class="caret"></b>
+              </p>
+            </a>
+            <div class="collapse" id="reports" style="">
+              <ul class="nav">
+                <li class="nav-item ">
+                  <a class="nav-link" href="#">
+                    <span class="sidebar-mini"> S.I </span>
+                    <span class="sidebar-normal"> Sub item </span>
+                  </a>
+                </li>
+                <li class="nav-item ">
+                  <a class="nav-link" href="#">
+                    <span class="sidebar-mini"> S.I </span>
+                    <span class="sidebar-normal"> Sub item </span>
                   </a>
                 </li>
                 
               </ul>
             </div>
           </li>
+
+          <li class="nav-item ">
+            <a class="nav-link" href="#">
+              <i class="material-icons">directions_walk</i>
+              <p>Visitors log</p>
+            </a>
+          </li> 
+        
         </ul>
+        
       </div>
     </div>
 
@@ -200,6 +291,24 @@
                 </a>
                 </li>
               @else
+              <li class="nav-item dropdown">
+              <a class="nav-link" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <i class="material-icons">settings</i>
+                  <p class="d-lg-none d-md-block">
+                    Stats
+                  </p>
+                </a>
+               
+              
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
+                   
+                  <a class="dropdown-item" href="#"><i class="material-icons">power_settings_new</i> Edit& configuration</a>   
+                  <a class="dropdown-item" href="#"><i class="material-icons">supervised_user_circle</i> Summary</a>
+             
+                </div>
+
+                
+              </li>
               <li class="nav-item dropdown">
               <a class="nav-link" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <i class="material-icons">dashboard</i>
