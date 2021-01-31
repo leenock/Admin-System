@@ -1,8 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Models\Student;
 use Illuminate\Http\Request;
+use App\Http\Requests\StoreStudentDetails;
+use App\Services\NewStudentService;
+
+use App\Helpers\Helper;
 
 class StudentController extends Controller
 {
@@ -12,10 +16,20 @@ class StudentController extends Controller
 *
 * @return \Illuminate\Http\Response
 */
+function __construct()
+{
 
-    public function index(){
+    $this->middleware('permission:student-list|student-create|student-edit|student-delete', ['only' => ['index','show']]);
+    $this->middleware('permission:student-create', ['only' => ['create','store']]);
+    $this->middleware('permission:student-edit', ['only' => ['edit','update']]);
+    $this->middleware('permission:student-delete', ['only' => ['destroy']]);
 
-        return view('students.index');
+
+}
+    public function index(NewStudentService $student){
+
+        return view('students.index', ['students' => $student->fetchAll()]);
+       // return view('students.index');
 
     }
 
@@ -40,10 +54,11 @@ public function create()
 * @return \Illuminate\Http\Response
 */
 
-public function store(Request $request)
+public function store(StoreStudentDetails $request, NewStudentService $student)
 {
-
   
+    $student->store($request);
+    return redirect()->route('students.index')->with('success','New student profile has created successfully'); 
 }
 
 /**

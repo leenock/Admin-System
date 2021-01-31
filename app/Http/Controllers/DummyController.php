@@ -1,8 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Dummy;
+use App\Models\Dummy;
 use Illuminate\Http\Request;
+
+use App\Http\Requests\DummyPostRequest;
+use App\Http\Requests\DummyUpdateRequest;
+use App\Services\DummyService;
 
 class DummyController extends Controller
 {
@@ -27,11 +31,11 @@ $this->middleware('permission:dummy-delete', ['only' => ['destroy']]);
 * @return \Illuminate\Http\Response
 */
 
-public function index()
+public function index(DummyService $dummy)
 {
-$dummies = Dummy::latest()->paginate(5);
-return view('dummys.index',compact('dummies'))
-->with('i', (request()->input('page', 1) - 1) * 5);
+       $dummies = Dummy::latest()->paginate(100);
+       return view('dummys.index',compact('dummies'))->with('i', (request()->input('page', 1) - 1) * 10);
+
 }
 
 /**
@@ -52,15 +56,10 @@ return view('dummys.create');
 * @return \Illuminate\Http\Response
 */
 
-public function store(Request $request)
+public function store(DummyPostRequest $request, DummyService $dummy)
 {
-request()->validate([
-'name' => 'required',
-'detail' => 'required',
-]);
-Dummy::create($request->all());
-        return redirect()->route('dummys.index')
-->with('success','dummy created successfully.');
+        $dummy->store($request);
+        return redirect()->route('dummys.index')->with('success','Dummy profile created successfully');
 }
 /**
 * Display the specified resource.
@@ -92,15 +91,11 @@ return view('dummys.edit',compact('dummy'));
 * @param  \App\Dummy  $dummy
 * @return \Illuminate\Http\Response
 */
-public function update(Request $request, Dummy $dummy)
+public function update(DummyUpdateRequest $request, Dummy $dummy)
 {
-request()->validate([
-'name' => 'required',
-'detail' => 'required',
-]);
-$dummy->update($request->all());
-        return redirect()->route('dummys.index')
-->with('success','dummy updated successfully');
+
+        $dummy->update($request->all());
+        return redirect()->route('dummys.index')->with('success','dummy updated successfully');
 }
 /**
 * Remove the specified resource from storage.
@@ -112,9 +107,8 @@ $dummy->update($request->all());
 
 public function destroy(Dummy $dummy)
 {
-$dummy->delete();
-    return redirect()->route('dummys.index')
-->with('success','dummy deleted successfully');
+    $dummy->delete();
+    return redirect()->route('dummys.index')->with('success','dummy deleted successfully');
 }
 
 }

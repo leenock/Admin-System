@@ -7,8 +7,8 @@
           <div class="row">
                  
                         @if ($errors->any())
-                <div class="alert alert-danger">
-                <strong>Whoops!</strong> There were some problems with your input.<br><br>
+                <div style="width:66%" class="alert alert-warning">
+                <strong>Whoops!</strong> There were some problems with the dummy data input.<br><br>
                 <ul>
                 @foreach ($errors->all() as $error)
                 <li>{{ $error }}</li>

@@ -95,12 +95,14 @@
             </a>
             <div class="collapse" id="students" style="">
               <ul class="nav">
+              @can('student-create')
                 <li class="nav-item ">
                   <a class="nav-link" href="{{ route('students.create') }}">
                     <span class="sidebar-mini"> ADM </span>
                     <span class="sidebar-normal"> Register </span>
                   </a>
                 </li>
+                @endcan
                 <li class="nav-item ">
                   <a class="nav-link" href="{{ route('students.index') }}">
                     <span class="sidebar-mini"> ST </span>
@@ -444,6 +446,38 @@
 
     });
   </script>
+
+<script>
+
+function allLetter(inputtxt) {
+    var letters = /^[a-z]*$/i;
+    if (!inputtxt.value.match(letters)) {
+        alert('Kindly  input letters only');
+    }
+}
+</script>
+<script>
+function allnumbers(inputtxt){
+
+  var numbers = /^[0-9]+$/;
+  if (!inputtxt.value.match(numbers)) {
+        alert('Please input numeric characters only');
+    }
+
+}
+</script>
+<script>
+ function required(inputtx) 
+   {
+     if (inputtx.value.length == 0)
+      { 
+         alert("message");  	
+         return false; 
+      }  	
+      return true; 
+    } 
+</script>
+
  <script>
     $(document).ready(function() {
       // Initialise the wizard
