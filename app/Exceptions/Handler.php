@@ -59,12 +59,6 @@ class Handler extends ExceptionHandler
             return response()->json(['User have not permission for this page access.']);
             }
 
-            if ($e instanceof \Illuminate\Database\QueryException) {
-                dd($e->getMessage());
-                return response()->view('errors.custom', [], 500);
-
-            }
-
         return parent::render($request, $exception);
     }
 }

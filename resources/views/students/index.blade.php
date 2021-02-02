@@ -75,7 +75,12 @@
                             
                             <a href="#" class="btn btn-link btn-warning btn-just-icon edit"><i class="material-icons">edit</i></a>
                           
-                            <a href="#" class="btn btn-link btn-warning btn-just-icon delete"><i class="material-icons">delete</i></a>
+                           
+                            @can('student-delete')
+                          {!! Form::open(['method' => 'DELETE','route' => ['students.destroy', $student->id],'style'=>'display:inline']) !!}
+                          {!! Form::submit('Delete', ['class' => 'btn btn-sm btn-danger']) !!}
+                          {!! Form::close() !!}
+                          @endcan
 
                             @endforeach
                             </td>

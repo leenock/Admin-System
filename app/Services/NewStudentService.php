@@ -73,20 +73,17 @@ class NewStudentService extends Service
      $student->Course_Period = $request->get('Course_Period');
      $student->Enrollement_Period = $request->get('Enrollement_Period');
     
+     $student->save();
 
 
+     }
 
-     $email_exist = Student::where('Email_Address', '=', $request->input('Email_Address'))->first();
-        if (!$email_exist === null) {
-          
-          $student->save();
-        } else {
-        
-            abort(405, 'Trying to assign an already assigned asset');
-           //return redirect('/students/create')->with('error', 'Assigned Email Address  already exists.');
+     public function delete($id)
+     {
 
-
-        }
+        $std =  Student::findOrFail($id);
+        $this->deleteStudentFile($std->passport);
+        return Student::destroy($id);
 
      }
 }

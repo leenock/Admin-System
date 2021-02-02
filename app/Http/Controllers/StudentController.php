@@ -94,8 +94,11 @@ public function update(Request $request, Student $student)
 * @param  \App\Dummy  $dummy
 * @return \Illuminate\Http\Response
 */
-public function destroy(Student $student)
+public function destroy($id, NewStudentService $std)
 {
+
+    $std->delete($id);
+    return redirect()->route('students.index')->with('success','Student Record has be deleted successfully');
 
 }
 

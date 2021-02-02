@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\StaffPostRequest;
+use App\Services\NewStaffService;
 
 use App\Http\Controllers\Controller;
 use App\User;
@@ -18,9 +20,8 @@ class UserController extends Controller
 public function index(Request $request)
 {
 
-$data = User::orderBy('id','DESC')->paginate(5);
-    return view('users.index',compact('data'))
-->with('i', ($request->input('page', 1) -1) * 5);
+    $data = User::orderBy('id','DESC')->paginate(5);
+    return view('users.index',compact('data'))->with('i', ($request->input('page', 1) -1) * 5);
 
 }
 /**
@@ -31,7 +32,7 @@ $data = User::orderBy('id','DESC')->paginate(5);
 
 public function create()
 {
-$roles = Role::pluck('name','name')->all();
+        $roles = Role::pluck('name','name')->all();
         return view('users.create',compact('roles'));
 }
 
@@ -42,20 +43,11 @@ $roles = Role::pluck('name','name')->all();
 * @return \Illuminate\Http\Response
 */
 
-public function store(Request $request)
+public function store(StaffPostRequest $request, NewStaffService $staff)
 {
-$this->validate($request, [
-'name' => 'required',
-    'email' => 'required|email|unique:users,email',
-    'password' => 'required|same:confirm-password',
-'roles' => 'required'
-]);
-$input = $request->all();
-    $input['password'] = Hash::make($input['password']);
-        $user = User::create($input);
-    $user->assignRole($request->input('roles'));
-return redirect()->route('users.index')
-->with('success','User created successfully');
+     $staff->store($request);
+    return redirect()->route('users.index')->with('success','User created successfully , They will be notified through the Email Address');
+
 }
 /**
 * Display the specified resource.
