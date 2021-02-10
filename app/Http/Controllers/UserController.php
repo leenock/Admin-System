@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Requests\StaffPostRequest;
 use App\Services\NewStaffService;
+use App\Notifications\UserAccountCreated;
 
 use App\Http\Controllers\Controller;
 use App\User;
@@ -33,6 +34,7 @@ public function index(Request $request)
 public function create()
 {
         $roles = Role::pluck('name','name')->all();
+
         return view('users.create',compact('roles'));
 }
 
@@ -45,7 +47,9 @@ public function create()
 
 public function store(StaffPostRequest $request, NewStaffService $staff)
 {
+    //$staff->notify(new UserAccountCreated());
      $staff->store($request);
+     
     return redirect()->route('users.index')->with('success','User created successfully , They will be notified through the Email Address');
 
 }

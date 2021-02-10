@@ -6,6 +6,7 @@ namespace App\Services;
 use App\Http\Requests\StaffPostRequest;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
+use App\Notifications\UserAccountCreated;
 
 use App\Http\Controllers\Controller;
 use App\User;
@@ -38,7 +39,13 @@ class NewStaffService
         $user = User::create($input);
         $user->assignRole($request->input('roles'));
 
+        
+
+
         $user->save();
+        
+        $user->refresh();
+        $user->notify(new UserAccountCreated("A new user has visited on your application."));
        // return redirect()->route('users.index')->with('success','User created successfully , They will be notified ');
     
     }

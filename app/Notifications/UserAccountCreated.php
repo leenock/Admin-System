@@ -41,9 +41,10 @@ class UserAccountCreated extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('The introduction to the notification.')
-                    ->action('Notification Action', url('/'))
-                    ->line('Thank you for using our application!');
+                    ->subject('STAFF ACCOUNT SETUP')
+                    ->line('You are receiving this email because your login account with various roles  has been created, contact Administrator to get your login password and username.')
+                    ->action('Notification Action', url('/login'))
+                    ->line('Thank you for been part of inifinitve systems staff member!');
     }
 
     /**
