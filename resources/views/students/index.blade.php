@@ -71,14 +71,14 @@
                           <td>{{ $student->created_at }}</td>
                           <td class="text-right">
                           
-                            <a button href="#" class="btn btn-link btn-info btn-just-icon like"><i class="material-icons">person</i></a>
+                            <a button href="{{ route('students.show',$student->id) }}" class="btn btn-link btn-info btn-just-icon like"><i class="material-icons">person</i></a>
                             
-                            <a href="#" class="btn btn-link btn-warning btn-just-icon edit"><i class="material-icons">edit</i></a>
+                            <a href="{{ route('students.edit',$student->id) }}" onclick="return myFunction();" class="btn btn-link btn-warning btn-just-icon edit"><i class="material-icons">edit</i></a>
                           
                            
                             @can('student-delete')
                           {!! Form::open(['method' => 'DELETE','route' => ['students.destroy', $student->id],'style'=>'display:inline']) !!}
-                          {!! Form::submit('Delete', ['class' => 'btn btn-sm btn-danger']) !!}
+                          {!! Form::submit('Delete', ['class' => 'btn btn-sm btn-danger delete-student']) !!}
                           {!! Form::close() !!}
                           @endcan
 

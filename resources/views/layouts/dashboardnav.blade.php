@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>Infinitive Systems</title>
+    <title>Administration Systems</title>
   <meta content='width=device-width, initial-scale=1.0, shrink-to-fit=yes' name='viewport' />
   <!--     Fonts and icons     -->
   <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons" />
@@ -238,7 +238,7 @@
                 <li class="nav-item ">
                   <a class="nav-link" href="#">
                     <span class="sidebar-mini"> S.I </span>
-                    <span class="sidebar-normal"> Sub item </span>
+                    <span class="sidebar-normal">Students List Report </span>
                   </a>
                 </li>
                 <li class="nav-item ">
@@ -269,7 +269,7 @@
  <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
         <div class="container-fluid">
           <div class="navbar-wrapper">
-            <a class="navbar-brand" href="#">Infinitive Admission System</a>
+            <a class="navbar-brand" href="#"> Admission System</a>
           </div>
           <div class="collapse navbar-collapse justify-content-end">
             <form class="navbar-form">
@@ -398,6 +398,8 @@
   <script src="{{ asset('assets_dashboard/js/core') }}/popper.min.js" type="text/javascript"></script>
   <script src="{{ asset('assets_dashboard/js/core') }}/bootstrap-material-design.min.js" type="text/javascript"></script>
 
+  <script src="{{ asset('assets_dashboard/js/core') }}/bootstrap-confirmation.js" type="text/javascript"></script>
+
   <script src="{{ asset('assets_dashboard/js/plugins') }}/perfect-scrollbar.jquery.min.js"></script>
 <!-- Plugin for the momentJs  -->
   <script src="{{ asset('assets_dashboard/js/plugins') }}/moment.min.js"></script>
@@ -439,6 +441,8 @@
  <!-- Sharrre libray -->
  <script src="{{ asset('assets_dashboard/js/core') }}/jquery.sharrre.js" type="text/javascript"></script>
 
+
+
   <script>
     $(document).ready(function() {
       // Javascript method's body can be found in assets_dashboard/js/demos.js
@@ -446,6 +450,44 @@
 
     });
   </script>
+
+
+<script>
+  function myFunction() {
+      if(!confirm("confirm you want to edit"))
+      event.preventDefault();
+  }
+ </script>
+
+<script>
+    $('.delete-user').click(function(e){
+        e.preventDefault() // Don't post the form, unless confirmed
+        if (confirm('Are you sure you want to delete user?')) {
+            // Post the form
+            $(e.target).closest('form').submit() // Post the surrounding form
+        }
+    });
+</script>
+
+<script>
+    $('.delete-role').click(function(e){
+        e.preventDefault() // Don't post the form, unless confirmed
+        if (confirm('Are you sure you want to delete role?')) {
+            // Post the form
+            $(e.target).closest('form').submit() // Post the surrounding form
+        }
+    });
+</script>
+
+<script>
+    $('.delete-student').click(function(e){
+        e.preventDefault() // Don't post the form, unless confirmed
+        if (confirm('Are you sure you want to delete student?')) {
+            // Post the form
+            $(e.target).closest('form').submit() // Post the surrounding form
+        }
+    });
+</script>
 
 <script>
 

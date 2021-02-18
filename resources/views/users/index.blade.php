@@ -52,13 +52,13 @@
                               <i class="material-icons">person</i>
                             </a>
                             @can('user-edit')
-                            <a href="{{ route('users.edit',$user->id) }}" type="button" rel="tooltip" class="btn btn-success">
+                            <a href="{{ route('users.edit',$user->id) }}" type="button" rel="tooltip" onclick="return myFunction();" class="btn btn-success">
                               <i class="material-icons">edit</i>
                             </a>
                             @endcan
                             @can('user-delete')
 {!! Form::open(['method' => 'DELETE','route' => ['users.destroy', $user->id],'style'=>'display:inline']) !!}
-{!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
+{!! Form::submit('Delete', ['class' => 'btn btn-danger delete-user']) !!}
 {!! Form::close() !!}
 @endcan
                           </td>
@@ -73,6 +73,7 @@
             </div>
            </div>
         </div>
+
 
 @endsection
 

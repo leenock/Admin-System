@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\Student;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreStudentDetails;
+use App\Http\Requests\StudentUpdateRequest;
 use App\Services\NewStudentService;
 
 use App\Helpers\Helper;
@@ -81,11 +82,17 @@ public function show(Student $student)
 * @return \Illuminate\Http\Response
 */
 
+public function edit(Student $student)
+{
+    return view('students.student_edit',compact('student'));
+}
 
-public function update(Request $request, Student $student)
+
+public function update(StudentUpdateRequest $request, $id,NewStudentService $student)
 {
 
-
+    $student->update($request,$id);
+    return redirect()->route('students.index')->with('success','student profile has updated successfully'); 
 
 }
 /**

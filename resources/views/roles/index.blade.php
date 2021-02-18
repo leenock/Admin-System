@@ -45,13 +45,13 @@
                               <i class="material-icons">person</i>
                             </a>
                             @can('role-edit')
-                            <a href="{{ route('roles.edit',$role->id) }}" type="button" rel="tooltip" class="btn btn-success">
+                            <a href="{{ route('roles.edit',$role->id) }}" type="button" onclick="return myFunction();" rel="tooltip" class="btn btn-success">
                               <i class="material-icons">edit</i>
                             </a>
                             @endcan
                             @can('role-delete')
 {!! Form::open(['method' => 'DELETE','route' => ['roles.destroy', $role->id],'style'=>'display:inline']) !!}
-{!! Form::submit('Delete', ['class' => 'btn btn-danger']) !!}
+{!! Form::submit('Delete', ['class' => 'btn btn-danger delete-role']) !!}
 {!! Form::close() !!}
 @endcan
                           </td>

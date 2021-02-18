@@ -94,6 +94,7 @@ return view('dummys.edit',compact('dummy'));
 public function update(DummyUpdateRequest $request, Dummy $dummy)
 {
 
+        
         $dummy->update($request->all());
         return redirect()->route('dummys.index')->with('success','dummy updated successfully');
 }

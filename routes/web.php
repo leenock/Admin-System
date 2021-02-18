@@ -20,10 +20,14 @@ Route::get('/', function () {
 Auth::routes(['register' => false]);
 
 Route::get('/infinitive_systems', 'HomeController@index')->name('infinitive_systems');
+//Route::post('/update/{id}',"StudentController@update") ;
 
 Route::group(['middleware' => ['auth']], function() {
     Route::resource('roles','RoleController');
     Route::resource('users','UserController');
     Route::resource('dummys','DummyController');
     Route::resource('students','StudentController');
+
+    
     });
+   

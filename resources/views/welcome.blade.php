@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('landing_page/img') }}/apple-icon.png">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
-  <title>Infinitive Systems Academy</title>
+  <title>Admin Systems</title>
   <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0, shrink-to-fit=no' name='viewport' />
   <!--Fonts and icons     -->
   <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700,200" rel="stylesheet" />
@@ -21,7 +21,7 @@
     <div class="container">
       <div class="navbar-translate">
         <a class="navbar-brand" href="http://127.0.0.1:8000/">
-          Infinitive Administration Systems 
+         Student  Administration System
         </a>
         <button class="navbar-toggler navbar-toggler" type="button" data-toggle="collapse" data-target="#navigation" aria-controls="navigation-index" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-bar bar1"></span>
@@ -79,7 +79,7 @@
     <div class="content-center">
       <div class="container">
         <div class="title-brand">
-          <h1 class="presentation-title">Infinitive Systems Academy</h1>
+          <h1 class="presentation-title">Admin System</h1>
           <div class="fog-low">
             <img src="{{ asset('landing_page/img') }}/fog-low.png" alt="">
              </div>
