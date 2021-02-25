@@ -114,6 +114,38 @@
             </div>
           </li>
           <li class="nav-item ">
+            <a class="nav-link collapsed" data-toggle="collapse" href="#course" aria-expanded="false">
+              <i class="material-icons">book</i>
+              <p>Lecturers
+                <b class="caret"></b>
+              </p>
+            </a>
+            <div class="collapse" id="course" style="">
+              <ul class="nav">
+                <li class="nav-item ">
+                  <a class="nav-link" href="#">
+                    <span class="sidebar-mini"> N.L </span>
+                    <span class="sidebar-normal">New-lecturer</span>
+                  </a>
+                </li>
+                <li class="nav-item ">
+                  <a class="nav-link" href="#">
+                    <span class="sidebar-mini"> L </span>
+                    <span class="sidebar-normal">Lecturers</span>
+                  </a>
+                </li>
+                <li class="nav-item ">
+                  <a class="nav-link" href="#">
+                    <span class="sidebar-mini"> G.S </span>
+                    <span class="sidebar-normal">Student Grading</span>
+                  </a>
+                </li>
+                
+                
+              </ul>
+            </div>
+          </li>
+          <li class="nav-item ">
             <a class="nav-link collapsed" data-toggle="collapse" href="#finance" aria-expanded="false">
               <i class="material-icons">qr_code_scanner</i>
               <p> Finance
@@ -123,18 +155,25 @@
             <div class="collapse" id="finance" style="">
               <ul class="nav">
                 <li class="nav-item ">
-                  <a class="nav-link" href="#">
+                  <a class="nav-link" href="{{ route('student_payments.index') }}">
                     <span class="sidebar-mini"> S.F </span>
-                    <span class="sidebar-normal"> Student finance </span>
+                    <span class="sidebar-normal"> Student finance list</span>
                   </a>
                 </li>
                 <li class="nav-item ">
-                  <a class="nav-link" href="#">
-                    <span class="sidebar-mini"> C.F </span>
-                    <span class="sidebar-normal"> course finance </span>
+                  <a class="nav-link" href="{{ route('student_payments.create') }}">
+                    <span class="sidebar-mini"> S.F </span>
+                    <span class="sidebar-normal">Student fee payments </span>
                   </a>
                 </li>
-                
+                @can('course-finance-create')
+                <li class="nav-item ">
+                  <a class="nav-link" href="{{ route('course_finance.create') }}">
+                    <span class="sidebar-mini"> C.F </span>
+                    <span class="sidebar-normal"> courses fee structure </span>
+                  </a>
+                </li>
+                @endcan
               </ul>
             </div>
           </li>
@@ -483,6 +522,16 @@
     $('.delete-student').click(function(e){
         e.preventDefault() // Don't post the form, unless confirmed
         if (confirm('Are you sure you want to delete student?')) {
+            // Post the form
+            $(e.target).closest('form').submit() // Post the surrounding form
+        }
+    });
+</script>
+
+<script>
+    $('.delete-coursefee').click(function(e){
+        e.preventDefault() // Don't post the form, unless confirmed
+        if (confirm('Are you sure you want to delete course fee structure?')) {
             // Post the form
             $(e.target).closest('form').submit() // Post the surrounding form
         }

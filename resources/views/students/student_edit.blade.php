@@ -223,7 +223,7 @@
                        <div class="form-group">
                         <h6 class="card-category text-gray">Course Names</h6> 
                           <select class="form-control" name="Course" value=" {{ $student->Course }}"  id="sel1" required>
-                                <option>Please select Course</option>
+                          <option value="">Please select Course</option>
                                 <option>SMS-Based Development</option>
                                 <option>Android Programming</option>
                                 <option>Arduino Coding</option>
@@ -238,7 +238,7 @@
                        <div class="form-group">
                         <h6 class="card-category text-gray">Course Period</h6> 
                           <select class="form-control" value="{{ $student->Course_Period }}" name="Course_Period" id="sel1" required> 
-                                 <option>Please select Period</option>
+                          <option value="">Please select Period</option>
                                  <option>one month</option>
                                  <option>two month</option>
                                  <option>three month</option>
@@ -250,7 +250,7 @@
                        <div class="form-group">
                         <h6 class="card-category text-gray">Enrollement Period</h6> 
                           <select class="form-control" name="Enrollement_Period" id="sel1" required> 
-                                <option>Enrollement Period</option>
+                          <option value="">Please select Enrollement Period</option>
                                 <option>January-March</option>
                                 <option>April -August</option>
                                <option>September-  December</option>

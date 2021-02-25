@@ -48,7 +48,7 @@ class StudentUpdateRequest extends FormRequest
             'Alternative_Mobile_NextKIn'=>'required|string|max:100',
             'Course'=>'required|string|max:100',
             'Course_Period'=>'required|string|max:20',
-          //  'Enrollement_Period'=>'required|string|max:20',
+           'Enrollement_Period'=>'required|string|max:20',
          
             
          ];
@@ -81,7 +81,7 @@ class StudentUpdateRequest extends FormRequest
             'Alternative_Mobile_NextKIn.required'=> 'Next of kin alternate phone number is missing',
             'Course.required'=> 'please fill in the course',
             'Course_Period.required'=> 'please fill in the course period',
-         //   'Enrollement_Period.required'=> 'please fill in the Enrollement Period',
+            'Enrollement_Period.required'=> 'please fill in the Enrollement Period',
     
          ];
     }

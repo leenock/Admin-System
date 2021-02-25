@@ -28,6 +28,11 @@ Route::group(['middleware' => ['auth']], function() {
     Route::resource('dummys','DummyController');
     Route::resource('students','StudentController');
 
+    Route::resource('course_finance','CourseFinanceController');
+    Route::resource('student_payments','StudentFinanceController');
+    Route::resource('student_grading','GradingController');
+    Route::resource('lecturer','LecturerController');
+
     
     });
    
